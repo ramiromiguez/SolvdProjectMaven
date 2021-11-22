@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.solvd.lab.AppTest" time="0.081" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.solvd.lab.AppTest" time="0.692" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="java.specification.version" value="11"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/rami/mvnprojects/solvd/target/surefire/surefirebooter8805314922196278604.jar /home/rami/mvnprojects/solvd/target/surefire 2021-11-22T07-38-22_141-jvmRun1 surefire4316789976020384068tmp surefire_018344481978901626026tmp"/>
+    <property name="sun.java.command" value="/home/rami/mvnprojects/solvd/target/surefire/surefirebooter69758980207833068.jar /home/rami/mvnprojects/solvd/target/surefire 2021-11-22T08-48-50_870-jvmRun1 surefire5825868691744445795tmp surefire_012811155786736112297tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/rami/mvnprojects/solvd/target/test-classes:/home/rami/mvnprojects/solvd/target/classes:/home/rami/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/rami/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/rami/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/home/rami/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/home/rami/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/rami/.m2/repository/commons-codec/commons-codec/1.11/commons-codec-1.11.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/rami/mvnprojects/solvd/target/surefire/surefirebooter8805314922196278604.jar"/>
+    <property name="surefire.real.class.path" value="/home/rami/mvnprojects/solvd/target/surefire/surefirebooter69758980207833068.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.12+7-post-Debian-2deb10u1"/>
     <property name="user.name" value="rami"/>
@@ -56,5 +56,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="com.solvd.lab.AppTest" time="0.003"/>
+  <testcase name="shouldAnswerWithTrue" classname="com.solvd.lab.AppTest" time="0.026"/>
 </testsuite>
