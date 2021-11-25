@@ -1,22 +1,22 @@
 package com.solvd.gym.data;
 
-import java.util.List;
+import java.util.Set;
 
 public final class Gym {
 	
-	private final List<Client> clients;
-	private final List<Instructor> instructors;
+	private final Set<Client> clients;
+	private final Set<Instructor> instructors;
 	private static int totalMoneyEarned;
 	private static int totalMoneySpent;
 	
-	public Gym(List<Instructor> instructors, List<Client> clients) {
+	public Gym(Set<Instructor> instructors, Set<Client> clients) {
 		this.clients = clients;
 		this.instructors = instructors;
 		totalMoneyEarned = 0;
 		totalMoneySpent = 0;
 	}
 	
-	public final List<Instructor> getInstructors(){
+	public final Set<Instructor> getInstructors(){
 		return instructors;
 	}
 	
@@ -24,7 +24,7 @@ public final class Gym {
 		instructors.add(instructor);
 	}
 	
-	public final List<Client> getClients(){
+	public final Set<Client> getClients(){
 		return clients;
 	}
 	

@@ -1,4 +1,4 @@
-package com.solvd.gym.data;
+package com.solvd.gym.genericlinkedlist;
 
 public class GenericLinkedList<D> {
 	Node<D> head;

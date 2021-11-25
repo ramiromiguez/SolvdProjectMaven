@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public abstract class Instructor implements IInstructorInfo, IInstructorSalary{
 	private int id;
-	private String name;
+	protected String name;
 	protected int salary;
 	protected int salaryEarned;
 	

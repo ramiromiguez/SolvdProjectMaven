@@ -57,119 +57,84 @@ public class WeightStorage {
 		WeightStorage.quantity = quantity;
 	}
 
-	public static void pick5kg(int quantity) throws QuantityUnavailableException {
-		try {
-			if (WeightStorage.fiveKgQuantity >= quantity) {
+	public static void pick5kg(int quantity) throws QuantityUnavailableException{
+			if (WeightStorage.getFiveKgQuantity() >= quantity) {
 				WeightStorage.setFiveKgQuantity(WeightStorage.getFiveKgQuantity() - quantity);
-				LOG.log(Level.INFO,"You have just picked " + quantity + "plates of 5 kg");
-				return;
+				LOG.log(Level.INFO,"You have just picked " + quantity + " plates of 5 kg");
 			}
-			if (WeightStorage.fiveKgQuantity < quantity) {
+			if (WeightStorage.getFiveKgQuantity() < quantity) {
 				throw new QuantityUnavailableException();
 			}
-		} catch (QuantityUnavailableException e) {
-			LOG.log(Level.WARNING, e.getMessage());
-		}
 	}
 
-	public static void leave5kg(int quantity) {
-		try {
-			if(WeightStorage.fiveKgQuantity >= quantity) {
+	public static void leave5kg(int quantity) throws QuantityLeaveUnavailableException {
+			if(WeightStorage.getFiveKgQuantity() >= quantity) {
 				WeightStorage.setFiveKgQuantity(quantity + WeightStorage.getFiveKgQuantity());
+				LOG.log(Level.INFO, "You have just leaved " + quantity + " plates of 5kg");
 			}
-			else{
+			if(WeightStorage.getFiveKgQuantity() > quantity){
 				throw new QuantityLeaveUnavailableException();
 			}
-		}
-		catch(QuantityLeaveUnavailableException e){
-			LOG.log(Level.WARNING, e.getMessage());
-		}
+	
 	}
 
-	public static void pick10kg(int tenKg) {
-		try {
-			if (WeightStorage.tenKgQuantity >= quantity) {
-				WeightStorage.setTenKgQuantity(WeightStorage.getTenKgQuantity() - quantity);
-				LOG.log(Level.INFO, "You have just picked " + quantity + "plates of 10 kg");
-				return;
-			}
-			if (WeightStorage.tenKgQuantity < quantity) {
-				throw new QuantityUnavailableException();
-			}
-		} catch (QuantityUnavailableException e) {
-			LOG.log(Level.WARNING, e.getMessage());
+	public static void pick10kg(int quantity) throws QuantityUnavailableException {
+		if (WeightStorage.getTenKgQuantity() >= quantity) {
+			WeightStorage.setTenKgQuantity(WeightStorage.getTenKgQuantity() - quantity);
+			LOG.log(Level.INFO,"You have just picked " + quantity + " plates of 10 kg");
+		}
+		if (WeightStorage.getTenKgQuantity() < quantity) {
+			throw new QuantityUnavailableException();
 		}
 	}
 	
-	public static void leave10kg(int quantity) {
-		try {
-			if(WeightStorage.tenKgQuantity >= quantity) {
+	public static void leave10kg(int quantity) throws QuantityLeaveUnavailableException {
+			if(WeightStorage.getTenKgQuantity() >= quantity) {
 				WeightStorage.setTenKgQuantity(quantity + WeightStorage.getTenKgQuantity());
+				LOG.log(Level.INFO, "You have just leaved " + quantity + " plates of 10kg");
 			}
-			else{
+			if(WeightStorage.getTenKgQuantity() < quantity){
 				throw new QuantityLeaveUnavailableException();
 			}
+	}
+	
+	public static void pick15kg(int quantity) throws QuantityUnavailableException {
+		if (WeightStorage.getFifteenKgQuantity() >= quantity) {
+			WeightStorage.setFifteenKgQuantity(WeightStorage.getFifteenKgQuantity() - quantity);
+			LOG.log(Level.INFO,"You have just picked " + quantity + " plates of 15 kg");
 		}
-		catch(QuantityLeaveUnavailableException e){
-			LOG.log(Level.WARNING, e.getMessage());
+		if (WeightStorage.getFifteenKgQuantity() < quantity) {
+			throw new QuantityUnavailableException();
 		}
 	}
 	
-	public static void pick15kg(int tenKg) {
-		try {
-			if (WeightStorage.fifteenKgQuantity >= quantity) {
-				WeightStorage.setFifteenKgQuantity(WeightStorage.getFifteenKgQuantity() - quantity);
-				LOG.log(Level.INFO, "You have just picked " + quantity + "plates of 15 kg");
-				return;
-			}
-			if (WeightStorage.fifteenKgQuantity < quantity) {
-				throw new QuantityUnavailableException();
-			}
-		} catch (QuantityUnavailableException e) {
-			LOG.log(Level.WARNING, e.getMessage());
+	public static void leave15kg(int quantity) throws QuantityLeaveUnavailableException {
+		if(WeightStorage.getFifteenKgQuantity() >= quantity) {
+			WeightStorage.setFifteenKgQuantity(quantity + WeightStorage.getFifteenKgQuantity());
+			LOG.log(Level.INFO, "You have just leaved " + quantity + " plates of 15kg");
+		}
+		if(WeightStorage.getFifteenKgQuantity() < quantity){
+			throw new QuantityLeaveUnavailableException();
 		}
 	}
 	
-	public static void leave15kg(int quantity) {
-		try {
-			if(WeightStorage.fifteenKgQuantity >= quantity) {
-				WeightStorage.setFifteenKgQuantity(quantity + WeightStorage.getFifteenKgQuantity());
-			}
-			else{
-				throw new QuantityLeaveUnavailableException();
-			}
+	public static void pick20kg(int quantity) throws QuantityUnavailableException {
+		if (WeightStorage.getTwentyKgQuantity() >= quantity) {
+			WeightStorage.setTwentyKgQuantity(WeightStorage.getTwentyKgQuantity() - quantity);
+			LOG.log(Level.INFO,"You have just picked " + quantity + " plates of 20 kg");
 		}
-		catch(QuantityLeaveUnavailableException e){
-			LOG.log(Level.WARNING, e.getMessage());
+		if (WeightStorage.getTwentyKgQuantity() < quantity) {
+			throw new QuantityUnavailableException();
 		}
 	}
 	
-	public static void pick20kg(int tenKg) {
-		try {
-			if (WeightStorage.twentyKgQuantity >= quantity) {
-				WeightStorage.setTwentyKgQuantity(WeightStorage.getTwentyKgQuantity() - quantity);
-				LOG.log(Level.INFO, "You have just picked " + quantity + "plates of 20 kg");
-				return;
-			}
-			if (WeightStorage.twentyKgQuantity < quantity) {
-				throw new QuantityUnavailableException();
-			}
-		} catch (QuantityUnavailableException e) {
-			LOG.log(Level.WARNING, e.getMessage());
+	public static void leave20kg(int quantity) throws QuantityLeaveUnavailableException {
+		if(WeightStorage.getTwentyKgQuantity() >= quantity) {
+			WeightStorage.setTwentyKgQuantity(quantity + WeightStorage.getTwentyKgQuantity());
+			LOG.log(Level.INFO, "You have just leaved " + quantity + " plates of 20kg");
 		}
-	}
-	
-	public static void leave20kg(int quantity) {
-		try {
-			if(WeightStorage.twentyKgQuantity >= quantity) {
-				WeightStorage.setTwentyKgQuantity(quantity + WeightStorage.getTwentyKgQuantity());
-			}
-			else{
-				throw new QuantityLeaveUnavailableException();
-			}
-		}
-		catch(QuantityLeaveUnavailableException e){
-			LOG.log(Level.WARNING, e.getMessage());
+		if(WeightStorage.getTwentyKgQuantity() < quantity){
+			throw new QuantityLeaveUnavailableException();
 		}
 	}
 }
