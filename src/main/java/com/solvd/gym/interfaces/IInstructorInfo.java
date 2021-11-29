@@ -1,4 +1,4 @@
-package com.solvd.gym.data;
+package com.solvd.gym.interfaces;
 
 import com.solvd.gym.exceptionContainer.ReceiveSalaryException;
 

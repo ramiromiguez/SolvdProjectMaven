@@ -1,4 +1,4 @@
-package com.solvd.gym.data;
+package com.solvd.gym.interfaces;
 
 public interface IClientInfo {
 	public int getId();

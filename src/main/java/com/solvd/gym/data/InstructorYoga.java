@@ -8,43 +8,65 @@ import java.util.logging.Logger;
 import com.solvd.gym.exceptionContainer.ReceiveSalaryException;
 
 public class InstructorYoga extends Instructor {
-	private Set<ClientYoga> clients = new HashSet<>();
+	private static Set<InstructorYoga> instructorYogaSet = new HashSet<>();
 	private final static Logger LOG = Logger.getLogger(InstructorYoga.class.getName());
 
-	public InstructorYoga(int id, String name, int salary, Set<ClientYoga> clients) {
+	public InstructorYoga(int id, String name, int salary) {
 		super(id, name, salary);
-		this.clients = clients;
 	}
 
+	//need to complete
 	@Override
 	public final void receiveSalary() throws ReceiveSalaryException {
-		int length = clients.size();
-		int total = length * getSalary();
-
-		if (Gym.getTotalMoneyEarned() >= total) {
-			salaryEarned = +total;
-			Gym.updateTotalMoneySpent(total);
-		} else {
-			throw new ReceiveSalaryException();
-		}
+		
+	}
+	
+	public static final void eliminateYogaInstructor(InstructorYoga instructorYoga) {
+		eliminateFromTheCollectionYogaInstructor(instructorYoga);
+		instructorYoga = null;
 	}
 
-	//return the quantity of clients that the instructor has
-	public String quantityOfClients() {
-		if(clients.isEmpty() == true) {
-			return name +"doesnt have any clients yet";
+	public static void addToTheCollectionYogaInstrcuctor(InstructorYoga instructorYoga) {
+		if(isInTheCollectionYogaInstrcuctor(instructorYoga)) {
+			LOG.log(Level.WARNING, instructorYoga.getName() +" is already on the Set");
 		}
 		else {
-		return "Yoga instructor " +name +" has " +clients.size();
+			instructorYogaSet.add(instructorYoga);
+			addToTheCollectionInstructor(instructorYoga);
+		}
+		
+	}
+
+	private static final void eliminateFromTheCollectionYogaInstructor(InstructorYoga instructorYoga) {
+		if(isInTheCollectionYogaInstrcuctor(instructorYoga)) {
+			instructorYogaSet.remove(instructorYoga);
+			eliminateFromTheCollectionInstructor(instructorYoga);
+		}
+		else {
+			return;
 		}
 	}
 	
-	
-	//print the list of clients of the instructor
-	public void printClients() {
-		System.out.println("Yoga instructor " +name +" list of clients");
-		for(ClientYoga clients: clients) {
-			LOG.log(Level.INFO, clients.getName());
+	public static boolean isInTheCollectionYogaInstrcuctor(InstructorYoga instructorYoga) {
+		boolean isIn = false;
+		if(instructorYogaSet.contains(instructorYoga)) {
+			isIn = true;
+		}
+		return isIn;
+	}
+
+	public static void printTheCollectionYogaInstrcuctor() {
+		if(instructorYogaSet.size() >= 1) {
+			for(InstructorYoga instructorYoga: instructorYogaSet) {
+				LOG.log(Level.INFO, instructorYoga.toString());
+			}
+		}
+		else {
+		LOG.log(Level.WARNING, "the Collection that you are trying to print is empty");
 		}
 	}
 }
+
+	
+
+
