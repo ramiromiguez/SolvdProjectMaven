@@ -1,7 +1,7 @@
 package com.solvd.gym.interfaces;
 
-import com.solvd.gym.exceptionContainer.ReceiveSalaryException;
+import com.solvd.gym.exception_container.ReceiveSalaryException;
 
 public interface IInstructorSalary {
-	void receiveSalary() throws ReceiveSalaryException;
+    void receiveSalary() throws ReceiveSalaryException;
 }
