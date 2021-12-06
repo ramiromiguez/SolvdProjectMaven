@@ -50,24 +50,4 @@ public final class Gym {
     public void modifyInstructor(Instructor instructor, Consumer<Instructor> modify) {
 	modify.accept(instructor);
     }
-
-    // public static void washCarWTime(Car car, Integer i, WashProcessorWTime
-    // washProcessor){
-    // boolean isWashed = washProcessor.wash(car, i);
-    // System.out.println("Car " + car.getCarModel() +" was washed succesfully: " +
-    // is washed);
-
-    // public static void washCar(Car car, WashProcessorWTime washProcessor){
-    // boolean isWashed = washProcessor.wash(car);
-    // System.out.println("Car " + car.getCarModel() +" was washed succesfully: " +
-    // is washed);
-
-    // public static void washCarWTime(Car car, Function<Car, Bollean>
-    // washProcessor){
-    // boolean isWashed = washProcessor.wash(car, i);
-    // System.out.println("Car " + car.getCarModel() +" was washed succesfully: " +
-    // is washed);
-    // for(Car c: garage.getCars()){
-    // Garage.washCar(c, car -> car.getCarModel().equals(CarModel.TOYOTA);
-    // }
 }
