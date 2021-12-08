@@ -68,6 +68,8 @@ public class Runner {
 	collectionAdmin.addInstructorToTheCollection(bianca);
 	collectionAdmin.addInstructorToTheCollection(axel);
 	collectionAdmin.addInstructorToTheCollection(ezequiel);
+	collectionAdmin.addInstructorToTheCollection(marcos);
+	collectionAdmin.addInstructorToTheCollection(pablo);
 
 	collectionAdmin.addClientToTheCollection(ramiro);
 	collectionAdmin.addClientToTheCollection(sergei);
@@ -75,6 +77,8 @@ public class Runner {
 	collectionAdmin.addClientToTheCollection(nina);
 	collectionAdmin.addClientToTheCollection(teo);
 	collectionAdmin.addClientToTheCollection(camila);
+	collectionAdmin.addClientToTheCollection(pedro);
+	collectionAdmin.addClientToTheCollection(sabrina);
 
 	LOG.log(Level.INFO, "is ramiro in the client collection " + collectionAdmin.isClientInTheCollection(ramiro));
 	collectionAdmin.printClientCollection();

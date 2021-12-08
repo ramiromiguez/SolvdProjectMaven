@@ -36,23 +36,35 @@ public interface ICollectionsAdministrator {
 
     public void eliminateInstructorFromTheCollection(InstructorYoga instructorYoga);
 
+    public void eliminateInstructorFromTheCollection(InstructorGym instructorGym);
+
     public void eliminateInstructorFromTheCollection(InstructorWeightLifter instructorWeightLifter);
 
     public void eliminateInstructorFromTheCollection(InstructorMartialArt instructorMartialArt);
-
-    public void eliminateInstructorFromTheCollection(InstructorGym instructorGym);
 
     public void eliminateClientFromTheCollection(ClientYoga clientYoga);
 
     public void eliminateClientFromTheCollection(ClientGym clientGym);
 
+    public void eliminateClientFromTheCollection(ClientWeightLifter clientWeightLifter);
+
+    public void eliminateClientFromTheCollection(ClientMartialArt clientMartialArt);
+
     public boolean isInstructorInTheCollection(InstructorYoga instructorYoga);
 
     public boolean isInstructorInTheCollection(InstructorGym instructorGym);
 
+    public boolean isInstructorInTheCollection(InstructorWeightLifter instructorWeightLifter);
+
+    public boolean isInstructorInTheCollection(InstructorMartialArt instructorMartialArt);
+
     public boolean isClientInTheCollection(ClientYoga clientYoga);
 
     public boolean isClientInTheCollection(ClientGym clientGym);
+
+    public boolean isClientInTheCollection(ClientWeightLifter clientWeightLifter);
+
+    public boolean isClientInTheCollection(ClientMartialArt clientMartialArt);
 
     public void printTotalCollection();
 
@@ -62,17 +74,29 @@ public interface ICollectionsAdministrator {
 
     public void printInstrcutorGymCollection();
 
+    public void printInstructorWeightLifter();
+
+    public void printInstructorMartialArt();
+
     public void printClientCollection();
 
     public void printClientYogaCollection();
 
     public void printClientGymCollection();
 
+    public void printClientWeightLifterCollection();
+
+    public void printClientMartialArtCollection();
+
     public GenericLinkedList<Object> getTotalGenericLinkedList();
 
     public Queue<Instructor> getInstructorList();
 
     public Set<InstructorYoga> getInstructorYogaSet();
+
+    public Set<InstructorWeightLifter> getInstructorWeightLifterSet();
+
+    public Set<InstructorMartialArt> getInstructorMartialArtSet();
 
     public Set<InstructorGym> getInstructorGymSet();
 
@@ -81,5 +105,9 @@ public interface ICollectionsAdministrator {
     public Set<ClientYoga> getClientYogaSet();
 
     public Set<ClientGym> getClientGymSet();
+
+    public Set<ClientWeightLifter> getClientWeightLifterSet();
+
+    public Set<ClientMartialArt> getClientMartialArtSet();
 
 }

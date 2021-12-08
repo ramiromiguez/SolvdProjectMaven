@@ -21,6 +21,10 @@ public class CollectionsAdministrator implements ICollectionsAdministrator {
     private Set<ClientYoga> clientsYogaSet = new HashSet<>();
     private Set<InstructorGym> instructorsGymSet = new HashSet<>();
     private Set<ClientGym> clientsGymSet = new HashSet<>();
+    private Set<InstructorWeightLifter> instructorsWeightLifterSet = new HashSet<>();
+    private Set<InstructorMartialArt> instructorsMartialArtSet = new HashSet<>();
+    private Set<ClientWeightLifter> clientsWeightLifterSet = new HashSet<>();
+    private Set<ClientMartialArt> clientsMartialArtSet = new HashSet<>();
     private final static Logger LOG = Logger.getLogger(CollectionsAdministrator.class.getName());
 
     public CollectionsAdministrator(Queue<Instructor> instructorsQueue, List<Client> clientList) {
@@ -51,6 +55,28 @@ public class CollectionsAdministrator implements ICollectionsAdministrator {
     }
 
     @Override
+    public void addInstructorToTheCollection(InstructorWeightLifter instructorWeightLifter) {
+	if (isInstructorInTheCollection(instructorWeightLifter)) {
+	    return;
+	} else {
+	    instructorsWeightLifterSet.add(instructorWeightLifter);
+	    instructorsQueue.add(instructorWeightLifter);
+	    totalCollection.insert(instructorWeightLifter);
+	}
+    }
+
+    @Override
+    public void addInstructorToTheCollection(InstructorMartialArt instructorMartialArt) {
+	if (isInstructorInTheCollection(instructorMartialArt)) {
+	    return;
+	} else {
+	    instructorsMartialArtSet.add(instructorMartialArt);
+	    instructorsQueue.add(instructorMartialArt);
+	    totalCollection.insert(instructorMartialArt);
+	}
+    }
+
+    @Override
     public void addClientToTheCollection(ClientYoga clientYoga) {
 	if (isClientInTheCollection(clientYoga)) {
 	    LOG.log(Level.WARNING, clientYoga.getName() + " is already on the Set");
@@ -69,6 +95,28 @@ public class CollectionsAdministrator implements ICollectionsAdministrator {
 	    clientsGymSet.add(clientGym);
 	    clientsList.add(clientGym);
 	    totalCollection.insert(clientGym);
+	}
+    }
+
+    @Override
+    public void addClientToTheCollection(ClientWeightLifter clientWeightLifter) {
+	if (isClientInTheCollection(clientWeightLifter)) {
+	    LOG.log(Level.WARNING, clientWeightLifter.getName() + " is already on the Set");
+	} else {
+	    clientsWeightLifterSet.add(clientWeightLifter);
+	    clientsList.add(clientWeightLifter);
+	    totalCollection.insert(clientWeightLifter);
+	}
+    }
+
+    @Override
+    public void addClientToTheCollection(ClientMartialArt clientMartialArt) {
+	if (isClientInTheCollection(clientMartialArt)) {
+	    LOG.log(Level.WARNING, clientMartialArt.getName() + " is already on the Set");
+	} else {
+	    clientsMartialArtSet.add(clientMartialArt);
+	    clientsList.add(clientMartialArt);
+	    totalCollection.insert(clientMartialArt);
 	}
     }
 
@@ -92,7 +140,28 @@ public class CollectionsAdministrator implements ICollectionsAdministrator {
 	} else {
 	    return;
 	}
+    }
 
+    @Override
+    public void eliminateInstructorFromTheCollection(InstructorWeightLifter instructorWeightLifter) {
+	if (isInstructorInTheCollection(instructorWeightLifter)) {
+	    instructorsWeightLifterSet.remove(instructorWeightLifter);
+	    instructorsQueue.remove(instructorWeightLifter);
+	    totalCollection.deleteData(instructorWeightLifter);
+	} else {
+	    return;
+	}
+    }
+
+    @Override
+    public void eliminateInstructorFromTheCollection(InstructorMartialArt instructorMartialArt) {
+	if (isInstructorInTheCollection(instructorMartialArt)) {
+	    instructorsMartialArtSet.remove(instructorMartialArt);
+	    instructorsQueue.remove(instructorMartialArt);
+	    totalCollection.deleteData(instructorMartialArt);
+	} else {
+	    return;
+	}
     }
 
     @Override
@@ -118,6 +187,28 @@ public class CollectionsAdministrator implements ICollectionsAdministrator {
     }
 
     @Override
+    public void eliminateClientFromTheCollection(ClientWeightLifter clientWeightLifter) {
+	if (isClientInTheCollection(clientWeightLifter)) {
+	    clientsWeightLifterSet.remove(clientWeightLifter);
+	    clientsList.remove(clientWeightLifter);
+	    totalCollection.deleteData(clientWeightLifter);
+	} else {
+	    return;
+	}
+    }
+
+    @Override
+    public void eliminateClientFromTheCollection(ClientMartialArt clientMartialArt) {
+	if (isClientInTheCollection(clientMartialArt)) {
+	    clientsMartialArtSet.remove(clientMartialArt);
+	    clientsList.remove(clientMartialArt);
+	    totalCollection.deleteData(clientMartialArt);
+	} else {
+	    return;
+	}
+    }
+
+    @Override
     public boolean isInstructorInTheCollection(InstructorYoga instructorYoga) {
 	boolean isIn = false;
 	if (instructorsYogaSet.contains(instructorYoga)) {
@@ -130,6 +221,24 @@ public class CollectionsAdministrator implements ICollectionsAdministrator {
     public boolean isInstructorInTheCollection(InstructorGym instructorGym) {
 	boolean isIn = false;
 	if (instructorsGymSet.contains(instructorGym)) {
+	    isIn = true;
+	}
+	return isIn;
+    }
+
+    @Override
+    public boolean isInstructorInTheCollection(InstructorWeightLifter instructorWeightLifter) {
+	boolean isIn = false;
+	if (instructorsWeightLifterSet.contains(instructorWeightLifter)) {
+	    isIn = true;
+	}
+	return isIn;
+    }
+
+    @Override
+    public boolean isInstructorInTheCollection(InstructorMartialArt instructorMartialArt) {
+	boolean isIn = false;
+	if (instructorsMartialArtSet.contains(instructorMartialArt)) {
 	    isIn = true;
 	}
 	return isIn;
@@ -152,7 +261,24 @@ public class CollectionsAdministrator implements ICollectionsAdministrator {
 	    isIn = true;
 	}
 	return isIn;
+    }
 
+    @Override
+    public boolean isClientInTheCollection(ClientWeightLifter clientWeightLifter) {
+	boolean isIn = false;
+	if (clientsWeightLifterSet.contains(clientWeightLifter)) {
+	    isIn = true;
+	}
+	return isIn;
+    }
+
+    @Override
+    public boolean isClientInTheCollection(ClientMartialArt clientMartialArt) {
+	boolean isIn = false;
+	if (clientsMartialArtSet.contains(clientMartialArt)) {
+	    isIn = true;
+	}
+	return isIn;
     }
 
     @Override
@@ -191,7 +317,28 @@ public class CollectionsAdministrator implements ICollectionsAdministrator {
 	} else {
 	    LOG.log(Level.WARNING, "the Collection that you are trying to print is empty");
 	}
+    }
 
+    @Override
+    public void printInstructorWeightLifter() {
+	if (instructorsWeightLifterSet.size() >= 1) {
+	    for (InstructorWeightLifter instructor : instructorsWeightLifterSet) {
+		LOG.log(Level.INFO, instructor.toString());
+	    }
+	} else {
+	    LOG.log(Level.WARNING, "the Collection that you are trying to print is empty");
+	}
+    }
+
+    @Override
+    public void printInstructorMartialArt() {
+	if (instructorsMartialArtSet.size() >= 1) {
+	    for (InstructorMartialArt instructor : instructorsMartialArtSet) {
+		LOG.log(Level.INFO, instructor.toString());
+	    }
+	} else {
+	    LOG.log(Level.WARNING, "the Collection that you are trying to print is empty");
+	}
     }
 
     @Override
@@ -228,6 +375,28 @@ public class CollectionsAdministrator implements ICollectionsAdministrator {
     }
 
     @Override
+    public void printClientWeightLifterCollection() {
+	if (clientsWeightLifterSet.size() >= 1) {
+	    for (ClientWeightLifter client : clientsWeightLifterSet) {
+		LOG.log(Level.INFO, client.toString());
+	    }
+	} else {
+	    LOG.log(Level.WARNING, "the Collection that you are trying to print is empty");
+	}
+    }
+
+    @Override
+    public void printClientMartialArtCollection() {
+	if (clientsMartialArtSet.size() >= 1) {
+	    for (ClientMartialArt client : clientsMartialArtSet) {
+		LOG.log(Level.INFO, client.toString());
+	    }
+	} else {
+	    LOG.log(Level.WARNING, "the Collection that you are trying to print is empty");
+	}
+    }
+
+    @Override
     public GenericLinkedList<Object> getTotalGenericLinkedList() {
 	return totalCollection;
     }
@@ -248,6 +417,16 @@ public class CollectionsAdministrator implements ICollectionsAdministrator {
     }
 
     @Override
+    public Set<InstructorWeightLifter> getInstructorWeightLifterSet() {
+	return instructorsWeightLifterSet;
+    }
+
+    @Override
+    public Set<InstructorMartialArt> getInstructorMartialArtSet() {
+	return instructorsMartialArtSet;
+    }
+
+    @Override
     public List<Client> getClientList() {
 	return clientsList;
     }
@@ -262,21 +441,13 @@ public class CollectionsAdministrator implements ICollectionsAdministrator {
 	return clientsGymSet;
     }
 
-}
+    @Override
+    public Set<ClientWeightLifter> getClientWeightLifterSet() {
+	return clientsWeightLifterSet;
+    }
 
-/*
- * //CLIENT FUNCTIONS public void nameChecker(Client client, Function<Client,
- * Boolean> isOnTheGym) { boolean isOn = isOnTheGym.apply(client);
- * System.out.println("Client " + client.getName() + " name is equal " + isOn);
- * }
- * 
- * public void existClientWithName(String string) { for (Client c :
- * Gym.getTheCollectionClient()) { Gym.nameChecker(c, client ->
- * client.getName().equals(string)); } }
- * 
- * static BiFunction<Integer, Integer, Integer> salaryFunction = (salary1,
- * salary2) -> Math.abs(salary1 - salary2);
- * 
- * public static int minusSalary(int salary1, int salary2) { int difference =
- * salaryFunction.apply(salary1, salary2); return difference;
- */
+    @Override
+    public Set<ClientMartialArt> getClientMartialArtSet() {
+	return clientsMartialArtSet;
+    }
+}
