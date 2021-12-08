@@ -6,9 +6,13 @@ import java.util.Set;
 
 import com.solvd.gym.data.Client;
 import com.solvd.gym.data.ClientGym;
+import com.solvd.gym.data.ClientMartialArt;
+import com.solvd.gym.data.ClientWeightLifter;
 import com.solvd.gym.data.ClientYoga;
 import com.solvd.gym.data.Instructor;
 import com.solvd.gym.data.InstructorGym;
+import com.solvd.gym.data.InstructorMartialArt;
+import com.solvd.gym.data.InstructorWeightLifter;
 import com.solvd.gym.data.InstructorYoga;
 import com.solvd.gym.genericlinkedlist.GenericLinkedList;
 
@@ -18,11 +22,23 @@ public interface ICollectionsAdministrator {
 
     public void addInstructorToTheCollection(InstructorGym instructorGym);
 
+    public void addInstructorToTheCollection(InstructorWeightLifter instructorWeightLifter);
+
+    public void addInstructorToTheCollection(InstructorMartialArt instructorMartialArt);
+
     public void addClientToTheCollection(ClientYoga client);
 
     public void addClientToTheCollection(ClientGym clientGym);
 
+    public void addClientToTheCollection(ClientWeightLifter clientWeightLifter);
+
+    public void addClientToTheCollection(ClientMartialArt clientMartialArt);
+
     public void eliminateInstructorFromTheCollection(InstructorYoga instructorYoga);
+
+    public void eliminateInstructorFromTheCollection(InstructorWeightLifter instructorWeightLifter);
+
+    public void eliminateInstructorFromTheCollection(InstructorMartialArt instructorMartialArt);
 
     public void eliminateInstructorFromTheCollection(InstructorGym instructorGym);
 

@@ -1,10 +1,13 @@
 package com.solvd.gym.data;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.solvd.gym.exception_container.QuantityLeaveUnavailableException;
 import com.solvd.gym.exception_container.QuantityUnavailableException;
@@ -30,36 +33,20 @@ public enum WeightStorage {
 	return LISTWITHFREEWEIGHTS;
     }
 
-    public static int getFIVE_KGQuantity() {
-	return WeightStorage.FIVE_KG.quantity;
+    public int getQuantity() {
+	return quantity;
     }
 
-    public static void setFIVE_KGQuantity(int FIVE_KGQuantity) {
-	WeightStorage.FIVE_KG.quantity = FIVE_KGQuantity;
+    public void setQuantity(int quantity) {
+	this.quantity = quantity;
     }
 
-    public static int getTEN_KGQuantity() {
-	return WeightStorage.TEN_KG.quantity;
-    }
-
-    public static void setTEN_KGQuantity(int TEN_KG) {
-	WeightStorage.TEN_KG.quantity = TEN_KG;
-    }
-
-    public static int getFIFTEEN_KGQuantity() {
-	return WeightStorage.FIFTEEN_KG.quantity;
-    }
-
-    public static void setFIFTEEN_KGQuantity(int FIFTEEN_KG) {
-	WeightStorage.FIFTEEN_KG.quantity = FIFTEEN_KG;
-    }
-
-    public static int getTWENTY_KGQuantity() {
-	return WeightStorage.TWENTY_KG.quantity;
-    }
-
-    public static void setTWENTY_KGQuantity(int TWENTY_KG) {
-	WeightStorage.TWENTY_KG.quantity = TWENTY_KG;
+    public void getAvailableWeights() {
+	List<WeightStorage> var = Stream.of(WeightStorage.values()).filter(weight -> weight.quantity > 0)
+		.sorted(Comparator.comparing(weight -> weight.quantity)).collect(Collectors.toList());
+	var.forEach(WeightStorage -> LOG.log(Level.INFO,
+		"For " + WeightStorage.name() + " there are disponible " + WeightStorage.quantity));
+	LOG.log(Level.INFO, "Disponible weights quantity: " + var);
     }
 
     private static BiFunction<Integer, Integer, Integer> minusWeight = (weightTotal,
@@ -71,9 +58,9 @@ public enum WeightStorage {
     }
 
     public static void pick5kg(int quantity) throws QuantityUnavailableException {
-	int result = weightPickedMinusTotalWeight(WeightStorage.getFIVE_KGQuantity(), quantity);
+	int result = weightPickedMinusTotalWeight(WeightStorage.FIVE_KG.getQuantity(), quantity);
 	if (result >= 0) {
-	    WeightStorage.setFIVE_KGQuantity(result);
+	    WeightStorage.FIVE_KG.setQuantity(result);
 	    LOG.log(Level.INFO, "You have just picked " + quantity + " plates of 5 kg");
 	} else {
 	    throw new QuantityUnavailableException();
@@ -81,19 +68,19 @@ public enum WeightStorage {
     }
 
     public static void leave5kg(int quantity) throws QuantityLeaveUnavailableException {
-	int result = weightPickedMinusTotalWeight(WeightStorage.getFIVE_KGQuantity(), quantity);
+	int result = weightPickedMinusTotalWeight(WeightStorage.FIVE_KG.getQuantity(), quantity);
 	if (result < 0) {
 	    throw new QuantityLeaveUnavailableException();
 	} else {
-	    WeightStorage.setFIVE_KGQuantity(result);
+	    WeightStorage.FIVE_KG.setQuantity(result);
 	    LOG.log(Level.INFO, "You have just left " + quantity + " plates of 5 kg");
 	}
     }
 
     public static void pick10kg(int quantity) throws QuantityUnavailableException {
-	int result = weightPickedMinusTotalWeight(WeightStorage.getTEN_KGQuantity(), quantity);
+	int result = weightPickedMinusTotalWeight(WeightStorage.TEN_KG.getQuantity(), quantity);
 	if (result >= 0) {
-	    WeightStorage.setTEN_KGQuantity(result);
+	    WeightStorage.TEN_KG.setQuantity(result);
 	    LOG.log(Level.INFO, "You have just picked " + quantity + " plates of 10 kg");
 	} else {
 	    throw new QuantityUnavailableException();
@@ -101,19 +88,19 @@ public enum WeightStorage {
     }
 
     public static void leave10kg(int quantity) throws QuantityLeaveUnavailableException {
-	int result = weightPickedMinusTotalWeight(WeightStorage.getTEN_KGQuantity(), quantity);
+	int result = weightPickedMinusTotalWeight(WeightStorage.TEN_KG.getQuantity(), quantity);
 	if (result < 0) {
 	    throw new QuantityLeaveUnavailableException();
 	} else {
-	    WeightStorage.setTEN_KGQuantity(result);
+	    WeightStorage.TEN_KG.setQuantity(result);
 	    LOG.log(Level.INFO, "You have just left " + quantity + " plates of 10 kg");
 	}
     }
 
     public static void pick15kg(int quantity) throws QuantityUnavailableException {
-	int result = weightPickedMinusTotalWeight(WeightStorage.getFIFTEEN_KGQuantity(), quantity);
+	int result = weightPickedMinusTotalWeight(WeightStorage.FIFTEEN_KG.getQuantity(), quantity);
 	if (result >= 0) {
-	    WeightStorage.setFIFTEEN_KGQuantity(result);
+	    WeightStorage.FIFTEEN_KG.setQuantity(result);
 	    LOG.log(Level.INFO, "You have just picked " + quantity + " plates of 15 kg");
 	} else {
 	    throw new QuantityUnavailableException();
@@ -121,19 +108,19 @@ public enum WeightStorage {
     }
 
     public static void leave15kg(int quantity) throws QuantityLeaveUnavailableException {
-	int result = weightPickedMinusTotalWeight(WeightStorage.getFIFTEEN_KGQuantity(), quantity);
+	int result = weightPickedMinusTotalWeight(WeightStorage.FIFTEEN_KG.getQuantity(), quantity);
 	if (result < 0) {
 	    throw new QuantityLeaveUnavailableException();
 	} else {
-	    WeightStorage.setFIFTEEN_KGQuantity(result);
+	    WeightStorage.FIFTEEN_KG.setQuantity(result);
 	    LOG.log(Level.INFO, "You have just left " + quantity + " plates of 15 kg");
 	}
     }
 
     public static void pick20kg(int quantity) throws QuantityUnavailableException {
-	int result = weightPickedMinusTotalWeight(WeightStorage.getTWENTY_KGQuantity(), quantity);
+	int result = weightPickedMinusTotalWeight(WeightStorage.TWENTY_KG.getQuantity(), quantity);
 	if (result >= 0) {
-	    WeightStorage.setTWENTY_KGQuantity(result);
+	    WeightStorage.TWENTY_KG.setQuantity(result);
 	    LOG.log(Level.INFO, "You have just picked " + quantity + " plates of 20 kg");
 	} else {
 	    throw new QuantityUnavailableException();
@@ -141,11 +128,11 @@ public enum WeightStorage {
     }
 
     public static void leave20kg(int quantity) throws QuantityLeaveUnavailableException {
-	int result = weightPickedMinusTotalWeight(WeightStorage.getTWENTY_KGQuantity(), quantity);
+	int result = weightPickedMinusTotalWeight(WeightStorage.TWENTY_KG.getQuantity(), quantity);
 	if (result < 0) {
 	    throw new QuantityLeaveUnavailableException();
 	} else {
-	    WeightStorage.setTWENTY_KGQuantity(result);
+	    WeightStorage.TWENTY_KG.setQuantity(result);
 	    LOG.log(Level.INFO, "You have just left " + quantity + " plates of 20 kg");
 	}
     }

@@ -2,5 +2,5 @@ package com.solvd.gym.interfaces;
 
 @FunctionalInterface
 public interface SalaryIncrease {
-	public int increase(Integer salary, Integer fifty, Integer multiplyer);
+    public int increase(int salary, float fifty, int multiplyer);
 }
