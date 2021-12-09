@@ -10,8 +10,13 @@ public class InstructorYoga extends Instructor {
 	this.workDay = workDay;
     }
 
-    // need to complete
     @Override
     public final void receiveSalary() throws ReceiveSalaryException {
+	salaryEarned = +getSalary();
+	if (Gym.getTotalMoneyEarned() < salary) {
+	    Gym.updateTotalMoneySpent(getSalary());
+	} else {
+	    throw new ReceiveSalaryException();
+	}
     }
 }

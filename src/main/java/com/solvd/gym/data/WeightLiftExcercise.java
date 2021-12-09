@@ -26,12 +26,6 @@ public enum WeightLiftExcercise {
 	return listOfExcercises;
     }
 
-//    public static List<String> listOfCompetitionExcercises() {
-//	listOfExcercises.clear();
-//	Stream.of(WeightLiftExcercise.values() -> {usedIn==})
-//	}
-//    }
-
     public static List<String> listOfTrainingExcercises() {
 	listOfExcercises.clear();
 	for (WeightLiftExcercise w : WeightLiftExcercise.values()) {

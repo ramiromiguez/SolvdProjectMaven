@@ -2,16 +2,21 @@ package com.solvd.gym.data;
 
 import com.solvd.gym.exception_container.ReceiveSalaryException;
 
-public class InstructorMartialArt extends Instructor{
-	MartialArtType martialArtType;
-	public InstructorMartialArt(int id, String name, int salary, MartialArtType martialArtType) {
-		super(id, name, salary);
-	}
+public class InstructorMartialArt extends Instructor {
+    MartialArtType martialArtType;
 
-	@Override
-	public void receiveSalary() throws ReceiveSalaryException {
-		// TODO Auto-generated method stub
-		
+    public InstructorMartialArt(int id, String name, int salary, MartialArtType martialArtType) {
+	super(id, name, salary);
+    }
+
+    @Override
+    public void receiveSalary() throws ReceiveSalaryException {
+	salaryEarned = +getSalary();
+	if (Gym.getTotalMoneyEarned() < salary) {
+	    Gym.updateTotalMoneySpent(getSalary());
+	} else {
+	    throw new ReceiveSalaryException();
 	}
+    }
 
 }

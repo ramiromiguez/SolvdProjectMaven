@@ -19,8 +19,12 @@ public class InstructorWeightLifter extends Instructor {
 
     @Override
     public void receiveSalary() throws ReceiveSalaryException {
-	// TODO Auto-generated method stub
-
+	salaryEarned = +getSalary();
+	if (Gym.getTotalMoneyEarned() < salary) {
+	    Gym.updateTotalMoneySpent(getSalary());
+	} else {
+	    throw new ReceiveSalaryException();
+	}
     }
 
     public void printTrainingExcercises() {
@@ -36,12 +40,4 @@ public class InstructorWeightLifter extends Instructor {
 	    LOG.log(Level.INFO, exc);
 	}
     }
-//
-//    public void printCompetitionExcercises() {
-//	listOfExcercises = WeightLiftExcercise.listOfCompetitionExcercises();
-//	for (String exc : listOfExcercises) {
-//	    LOG.log(Level.INFO, exc);
-//	}
-//    }
-
 }
